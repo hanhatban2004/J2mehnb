@@ -1,0 +1,33 @@
+name: Import site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download and unzip site
+        run: |
+          set -e
+          curl -L -o /tmp/site.zip "https://tmpfiles.org/dl/wsAGclrW7GnY/site.zip"
+          ls -la /tmp/site.zip
+          rm -rf import && mkdir import
+          cd import
+          unzip -q /tmp/site.zip
+          ls -la | head
+      - name: Sync into repo
+        run: |
+          set -e
+          rsync -a --delete --exclude '.git' --exclude '.github' --exclude 'README.md' import/ .
+          rm -rf import
+          git config user.name "hanhatban2004"
+          git config user.email "hanhatban2004@users.noreply.github.com"
+          git add -A
+          git commit -m "Import full J2ME web site (no CheerpJ)" || echo "nothing to commit"
+          git push
