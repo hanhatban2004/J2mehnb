@@ -1,4 +1,4 @@
-# J2ME Web (không CheerpD / khong CheerpJ)
+# J2ME Web (khong CheerpJ)
 
 Môi trường chạy game J2ME (.jar) ngay trên trình duyệt, viết thuần bằng JavaScript (dựa trên J2ME.js / J2meJS, GPL-2.0). Không cần Java, không dùng CheerpJ.
 
@@ -15,13 +15,13 @@ Mở http://localhost:8080
 - `main.html` — chạy trực tiếp qua tham số URL (jad, jars, midletClassName, gamepad...).
 - `indexbatch.html` — cài nhiều .jar cùng lúc.
 
-## Game kèm sẵn
+## Thêm game
 
-- Mobi Army 3 (`games/mobi_army_3.jar`) — đã thêm vào danh sách trang chủ qua `gamelist.js`.
+Đặt file .jar vào thư mục `games/`, sửa `gamelist.js` để thêm vào danh sách trang chủ. Lưu ý các game online (như Mobi Army) cần máy chủ của nhà phát hành còn hoạt động mới chơi được.
 
-## Triển khai (Vercel / Netlify / hosting tĩnh)
+## Triển khai (Vercel / Netlify / GitHub Pages)
 
-Đây là trang tĩnh, triển khai trực tiếp được. Đã kèm `vercel.json`.
+Đây là trang tĩnh, triển khai trực tiếp được. Đã kèm `vercel.json`. Workflow GitHub Pages ở `.github/workflows/pages.yml` tự deploy mỗi lần push.
 
 ## Bản quyền
 
