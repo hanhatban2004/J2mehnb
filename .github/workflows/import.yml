@@ -15,12 +15,13 @@ jobs:
       - name: Download and unzip site
         run: |
           set -e
-          curl -L -o /tmp/site.zip "https://tmpfiles.org/dl/wsAGclrW7GnY/site.zip"
+          curl -sS -f -L -o /tmp/site.zip "https://files.catbox.moe/0q0gwv.zip"
           ls -la /tmp/site.zip
+          file /tmp/site.zip
           rm -rf import && mkdir import
           cd import
           unzip -q /tmp/site.zip
-          ls -la | head
+          ls | head
       - name: Sync into repo
         run: |
           set -e
